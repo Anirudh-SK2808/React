@@ -1,40 +1,42 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom"; // Remove duplicate import
 
 const Sidebar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="col-md-3 col-lg-2 sidebar p-3 bg-dark text-white">
+    <div className="col-md-3 col-lg-2 sidebar p-3 bg-dark text-white d-flex flex-column h-100">
       <h4 className="mb-4">Admin Portal</h4>
-      <div className="nav flex-column">
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/")}>
+      <div className="nav flex-column flex-grow-1">
+        <button className="btn btn-dark text-start w-100" onClick={() => navigate("/")}>
           Home
         </button>
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/admin")}>
+        <button className="btn btn-dark text-start w-100" onClick={() => navigate("/admin")}>
           Dashboard
         </button>
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/campaign")}>
+        <button className="btn btn-dark text-start w-100" onClick={() => navigate("/campaign")}>
           Campaign Review
         </button>
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/login")}>
+        <button className="btn btn-dark text-start w-100" onClick={() => navigate("/login")}>
           Login
         </button>
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/signup")}>
+        <button className="btn btn-dark text-start w-100" onClick={() => navigate("/signup")}>
           Signup
         </button>
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/volunteer")}>
+        <button className="btn btn-dark text-start w-100" onClick={() => navigate("/volunteer")}>
           Volunteer
         </button>
-        <button className="btn btn-danger text-white text-start nav-link mt-auto" onClick={() => navigate("/")}>
-          Logout
-        </button>
       </div>
+      <button className="btn btn-danger text-start w-100 mt-auto" onClick={() => navigate("/")}>
+        Logout
+      </button>
     </div>
   );
 };
+
+
+
 
 
 

@@ -1,114 +1,90 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const Navbar = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-    <div className="container">
-      <a className="navbar-brand" href="#">EnviroHelp</a>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="nav flex-column">
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/")}>
-          Home
-        </button>
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/admin")}>
-          Dashboard
-        </button>
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/campaign")}>
-          Campaign Review
-        </button>
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/login")}>
-          Login
-        </button>
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/signup")}>
-          Signup
-        </button>
-        <button className="btn btn-dark text-white text-start nav-link" onClick={() => navigate("/volunteer")}>
-          Volunteer
-        </button>
-        <button className="btn btn-danger text-white text-start nav-link mt-auto" onClick={() => navigate("/")}>
-          Logout
-        </button>
-      </div>
-    </div>
-  </nav>
-);
+const App = () => {
+  return (
+    <>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+        <div className="container">
+          <a className="navbar-brand" href="#">EnviroHelp</a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
+              <li className="nav-item"><a className="nav-link" href="#projects">Campaigns</a></li>
+              <li className="nav-item"><a className="nav-link" href="#login">Login</a></li>
+              <li className="nav-item"><a className="nav-link" href="#signup">Sign Up</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-const HeroSection = () => (
-  <section className="hero-section text-center text-white py-5" style={{
-    background: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600')",
-    backgroundSize: "cover",
-    backgroundPosition: "center"
-  }}>
-    <div className="container">
-      <h1 className="display-4 mb-4">Make a Difference in Your Community</h1>
-      <p className="lead mb-4">Connect with environmental projects and volunteers in your area</p>
-      <a href="#" className="btn btn-lg text-white" style={{ backgroundColor: "#2ecc71" }}>Get Started</a>
-    </div>
-  </section>
-);
+      <section className="hero-section text-center">
+        <div className="container">
+          <h1 className="display-4 mb-4">Make a Difference in Your Community</h1>
+          <p className="lead mb-4">Connect with environmental projects and volunteers in your area</p>
+          <a href="#signup" className="btn btn-lg eco-primary text-white">Get Started</a>
+        </div>
+      </section>
 
-const FeatureCard = ({ title, description }) => (
-  <div className="col-md-4">
-    <div className="card feature-card h-100 shadow-sm text-center p-4">
-      <h3 className="h5 mb-3">{title}</h3>
-      <p>{description}</p>
-    </div>
-  </div>
-);
+      <section className="py-5" id="about">
+        <div className="container">
+          <h2 className="text-center mb-5">How It Works</h2>
+          <div className="row g-4">
+            {["Create Campaigns", "Connect", "Make Impact"].map((title, index) => (
+              <div className="col-md-4" key={index}>
+                <div className="card feature-card h-100 shadow-sm">
+                  <div className="card-body text-center">
+                    <h3 className="h5 mb-3">{title}</h3>
+                    <p>{title === "Create Campaigns" ? "Post your initiative and describe the help you need" : title === "Connect" ? "Find volunteers and organizations willing to support your cause" : "Work together to create positive environmental change"}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-const AboutSection = () => (
-  <section className="py-5" id="about">
-    <div className="container">
-      <h2 className="text-center mb-5">How It Works</h2>
-      <div className="row g-4">
-        <FeatureCard title="Create Campaigns" description="Post your environmental initiative and describe the help you need." />
-        <FeatureCard title="Connect" description="Find volunteers and organizations willing to support your cause." />
-        <FeatureCard title="Make Impact" description="Work together to create positive environmental change." />
-      </div>
-    </div>
-  </section>
-);
+      <section className="bg-light py-5" id="projects">
+        <div className="container">
+          <h2 className="text-center mb-5">Featured Campaigns</h2>
+          <div className="row g-4">
+            {["River Cleanup Initiative", "Community Tree Planting", "Recycling Education"].map((title, index) => (
+              <div className="col-md-6 col-lg-4" key={index}>
+                <div className="card h-100">
+                  <div className="card-body">
+                    <h5 className="card-title">{title}</h5>
+                    <p className="card-text">{title === "River Cleanup Initiative" ? "Join our monthly river cleanup project to protect local wildlife." : title === "Community Tree Planting" ? "Help us plant 1000 trees in urban areas this season." : "Educate communities about proper recycling practices."}</p>
+                    <a href="#login" className="btn eco-primary text-white">Learn More</a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-const CampaignCard = ({ title, description }) => (
-  <div className="col-md-6 col-lg-4">
-    <div className="card h-100 p-3">
-      <h5 className="card-title">{title}</h5>
-      <p className="card-text">{description}</p>
-      <a href="#" className="btn text-white" style={{ backgroundColor: "#2ecc71" }}>Learn More</a>
-    </div>
-  </div>
-);
-
-const CampaignsSection = () => (
-  <section className="bg-light py-5" id="projects">
-    <div className="container">
-      <h2 className="text-center mb-5">Featured Campaigns</h2>
-      <div className="row g-4">
-        <CampaignCard title="River Cleanup Initiative" description="Join our monthly river cleanup project to protect local wildlife." />
-        <CampaignCard title="Community Tree Planting" description="Help us plant 1000 trees in urban areas this season." />
-        <CampaignCard title="Recycling Education" description="Educate communities about proper recycling practices." />
-      </div>
-    </div>
-  </section>
-);
-
-const Footer = () => (
-  <footer className="bg-dark text-white py-4">
-    <div className="container text-center">
-      <p>&copy; 2024 EnviroHelp. All rights reserved.</p>
-    </div>
-  </footer>
-);
-
-const App = () => (
-  <>
-    <Navbar />
-    <HeroSection />
-    <AboutSection />
-    <CampaignsSection />
-    <Footer />
-  </>
-);
+      <footer className="bg-dark text-white py-4">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <h5>EnviroHelp</h5>
+              <p>Connecting people for a greener future</p>
+            </div>
+            <div className="col-md-6 text-md-end">
+              <ul className="list-inline">
+                <li className="list-inline-item"><a href="#" className="text-white">Privacy Policy</a></li>
+                <li className="list-inline-item"><a href="#" className="text-white">Terms of Service</a></li>
+                <li className="list-inline-item"><a href="#" className="text-white">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+};
 
 export default App;
