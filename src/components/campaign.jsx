@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Dashboard = () => {
+const poster = () => {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -106,4 +106,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard1;
+export default poster;
