@@ -13,19 +13,7 @@ import Volunteer from "./volunteer";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Index />}>
-          <Route index element={<Index />} />
-          <Route path="admin" element={<Admin />} />
-          <Route path="campaign" element={<CampaignReview />} />
-          <Route path="login" element={<Login/>} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="volunteer" element={<Volunteer />} />
-         
-        </Route>
-      </Routes>
-    </BrowserRouter>
+   <Admin/>
   );
 }
 
